@@ -1,62 +1,56 @@
-*{
+* {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-    font-family: 'poppins',sans-serif;
+    font-family: 'poppins', sans-serif;
 }
 
-body{
-    height: 100vh;
+body {
     width: 100%;
+    height: fit-content;
     display: flex;
-    align-items: center;
     justify-content: center;
     background-image: url(./images/bgwallpaper.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-position: 50% 50%;
 }
 
-form>div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+form>div {
     padding: 10px 20px;
 }
 
-.mainf{
+
+main {
     background-color: transparent;
     color: white;
-    backdrop-filter: blur(30px);
+    width: 40%;
+    backdrop-filter: blur(10px);
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
-    padding: 10px 0px;
     border-radius: 10px;
+    margin: 40px 0px;
 }
 
-label{
-    display: flex;
-    align-self: center;
-}
-
-div>span{
+div>span {
     position: relative;
 }
 
-span>input{
+span>input {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     border: 2px solid #3f3f33;
     width: 100%;
 }
 
-select{
+select {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 100%;
     outline: none;
     border: 2px solid #3f3f33;
 }
 
-span>i{
+span>i {
     position: absolute;
     top: 0%;
     bottom: 0%;
@@ -66,7 +60,7 @@ span>i{
     color: black;
 }
 
-button{
+button {
     padding: 10px 20px;
     margin: 10px;
     border-radius: 20px;
@@ -77,9 +71,8 @@ button{
     cursor: pointer;
 }
 
-@media screen and (max-width:432px) {
-    .mainf{
+@media screen and (max-width:764px) {
+    main {
         width: 90%;
-        margin: auto;
     }
 }

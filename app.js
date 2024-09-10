@@ -34,13 +34,25 @@ var countryStateCityInfo = {
         }
     }
 };
+const names = document.getElementById("name");
+const age = document.getElementById("age");
+const phnum = document.getElementById("phnum");
+const mail = document.getElementById("emailid");
 const countrySelect = document.getElementById("c");
 const stateSelect = document.getElementById("s2");
 const citySelect = document.getElementById("s3");
-const names = document.getElementById("name")
-const age = document.getElementById("age");
-const phnum = document.getElementById("phnum");
-const submitbtn = document.getElementById("submitbtn");
+const form = document.getElementById('form')
+
+function Seterror(element, err) {
+    let singleElement = document.getElementById(element);
+    singleElement.innerHTML = err
+    singleElement.style.color = 'Red'
+}
+
+function Solveerr(element) {
+    let singleElement = document.getElementById(element);
+    singleElement.innerHTML = ""
+}
 
 function selectCountry() {
     stateSelect.disabled = true;
@@ -85,25 +97,99 @@ stateSelect.addEventListener('change', function (e) {
     }
 })
 
-submitbtn.addEventListener('click', (e) => {
-    if (names.value == "" || age.value == "" || phnum.value == "" || countrySelect.value == "" || stateSelect.value == "" || citySelect.value == "") {
-        e.preventDefault
-        alert("Enter All Values....")
+const validateName = (name) => {
+    return String(name)
+        .toLowerCase()
+        .match(
+            /^[A-Za-z]+(?: [A-Za-z]+)*$/
+        )
+}
+
+const validateAge = (age) => {
+    return age.match(
+        /^(?:[1-9]|[1-9][0-9]|100)$/
+    )
+}
+
+const validatePhone = (phone) => {
+    return (phone).match(
+        /^\+?(\d{1,3})?[\s\-]?(\(?\d{1,4}\)?)?[\s\-]?(\d{1,4})[\s\-]?(\d{1,4})[\s\-]?(\d{1,9})$/
+    )
+}
+const validateEmail = (email) => {
+    return String(email)
+        .toLowerCase()
+        .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+
+};
+
+var nameError = AgeError = phError = mailError = true
+function validateForm() {
+    if (names.value == "") {
+        Seterror("nameErr", "Enter The Name");
+    } else if (!validateName(names.value)) {
+        Seterror("nameErr", "Enter Valid Name");
+    } else {
+        Solveerr("nameErr")
+        nameError = false
+    }
+
+    if (age.value == "") {
+        Seterror("ageErr", "Enter The Age");
+    } else if (!validateAge(age.value)) {
+        Seterror("ageErr", "Enter Valid Age");
+    } else {
+        Solveerr("ageErr")
+        AgeError = false
+
+    }
+
+    if (phnum.value == "") {
+        Seterror("phErr", "Enter The Phone Number");
+    } else if (!validatePhone(phnum.value)) {
+        Seterror("phErr", "Enter Valid Phone Number");
+    } else {
+        Solveerr("phErr")
+        phError = false
+    }
+
+
+    if (mail.value == "") {
+        Seterror("emailErr", "Enter The Mail");
+    } else if (!validateEmail(mail.value)) {
+        Seterror("emailErr", "Enter Valid Mail");
+    } else {
+        Solveerr("emailErr");
+        mailError = false
+    }
+
+}
+selectCountry()
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    validateForm()
+    if ((nameError || AgeError || phError || mailError) == true) {
+        return false
     } else {
         alert(`You Entered Values Are
-        Name: ${names.value}
-        Age:${age.value}
-        Phone Number:${phnum.value}
-        Country:${countrySelect.value}
-        State:${stateSelect.value}
-        City:${citySelect.value}`)
+                    Name: ${names.value}
+                    Age:${age.value}
+                    Phone Number:${phnum.value}
+                    Mail ID:${mail.value}
+                    Country:${countrySelect.value}
+                    State:${stateSelect.value}
+                    City:${citySelect.value}`)
         names.value = ""
         age.value = ""
         phnum.value = ""
+        mail.value = ""
         countrySelect.value = ""
         stateSelect.disabled = true
         citySelect.disabled = true
     }
-
 })
-selectCountry()
+
+
+

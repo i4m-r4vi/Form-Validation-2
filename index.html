@@ -15,50 +15,61 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+
 </head>
 
 <body>
-    <main>
-        
-        <div class="mainf">
-            <h2 style="text-align: center;">Form Validation</h2>
-            <form action="">
+    <main>            
+            <form action="" id="form">
+                <h2 style="text-align: center; padding-top: 10px;">Form Validation</h2>
                 <div class="name">
                     <label for="">Name:</label>
-                    <span>
+                    <span class="spans">
                         <input type="text" placeholder="Enter Your Name" id="name">
                         <i class="fa fa-user"></i>
                     </span>
+                    <p id="nameErr"></p>
                 </div>
 
                 <div class="age">
                     <label>Age:</label>
-                    <span>
-                        <input type="number" maxlength="2" placeholder="Enter Your Age" id="age">
+                    <span class="spans">
+                        <input placeholder="Enter Your Age" id="age">
                         <i class="fa fa-calendar"></i>
                     </span>
+                    <p id="ageErr"></p>
                 </div>
 
                 <div class="phnum">
                     <label>Phone Number:</label>
-                    
-                   <span>
-                    <input type="number" maxlength="10" placeholder="Phone Number" id="phnum">
-                    <i class="fa fa-mobile"></i>
-                   </span>
+                    <span class="spans">
+                        <input maxlength="10" placeholder="Phone Number" id="phnum">
+                        <i class="fa fa-mobile"></i>
+                    </span>
+                    <p id="phErr"></p>
+                </div>
+
+                <div class="email">
+                    <label>Email:</label>
+
+                    <span class="spans">
+                        <input type="text" placeholder="Email" id="emailid">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    <p id="emailErr"></p>
                 </div>
 
                 <div class="country">
                     <label>Country:</label>
                     <select name="" id="c">
-                       <option value="">Select The country</option>
+                        <option value="">Select The country</option>
                     </select>
                 </div>
 
                 <div class="state">
                     <label>State:</label>
                     <select name="" id="s2">
-                        <option value="" >Select The City</option>
+                        <option value="">Select The City</option>
                     </select>
 
                 </div>
@@ -66,19 +77,19 @@
                 <div class="district">
                     <label>City:</label>
                     <select name="" id="s3">
-                        <option value="" >Select The City</option>
+                        <option value="">Select The City</option>
                     </select>
                 </div>
+                <div style="display: grid; width: fit-content; margin: auto;">
+                    <button type="submit">Submit</button>
+                </div>
 
-                
             </form>
-            <div style="display: grid; width: fit-content; margin: auto;">
-                <button id="submitbtn">Submit</button>
-            </div>
-        </div>
     </main>
-
+    
 </body>
 
 <script src="./app.js"></script>
+
+
 </html>
