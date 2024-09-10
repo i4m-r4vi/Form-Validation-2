@@ -125,7 +125,7 @@ const validateEmail = (email) => {
 
 };
 
-var nameError = AgeError = phError = mailError = true
+var nameError = AgeError = phError = mailError = countryErr = stateErr = cityErr = true
 function validateForm() {
     if (names.value == "") {
         Seterror("nameErr", "Enter The Name");
@@ -165,12 +165,33 @@ function validateForm() {
         mailError = false
     }
 
+    if (countrySelect.value == "Select The Country"){
+        Seterror("countryErr","Select Your Country");
+    }else{
+        Solveerr("countryErr")
+        countryErr=false
+    }
+
+    if (stateSelect.value == "Select The State"){
+        Seterror("stateErr","Select The State");
+    }else{
+        Solveerr("stateErr")
+        stateErr=false
+    }
+
+    if (citySelect.value == "Select The City"){
+        Seterror("cityErr","Select Your City");
+    }else{
+        Solveerr("cityErr")
+        cityErr=false
+    }
+
 }
-selectCountry()
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     validateForm()
-    if ((nameError || AgeError || phError || mailError) == true) {
+    if ((nameError || AgeError || phError || mailError || countryErr || stateErr || cityErr ) == true) {
         return false
     } else {
         alert(`You Entered Values Are
@@ -185,11 +206,12 @@ form.addEventListener('submit', (e) => {
         age.value = ""
         phnum.value = ""
         mail.value = ""
-        countrySelect.value = ""
+        countrySelect.value="Select The Country"
         stateSelect.disabled = true
         citySelect.disabled = true
     }
 })
+selectCountry()
 
 
 
